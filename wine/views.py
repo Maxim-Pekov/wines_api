@@ -1,7 +1,9 @@
 from django.http import JsonResponse
 from wine import models
+from rest_framework.decorators import api_view
 
 
+@api_view(['GET'])
 def wine_list(request):
     wines = models.Wine.objects.all()
     dumped_wines = []
