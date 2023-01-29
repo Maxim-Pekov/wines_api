@@ -1,6 +1,7 @@
 from django.http import JsonResponse
 from wine import models
 from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 
 @api_view(['GET'])
@@ -15,7 +16,4 @@ def wine_list(request):
             "price": wine.price,
             "by_stock": wine.by_stock
         })
-    return JsonResponse(dumped_wines, safe=False, json_dumps_params={
-        'ensure_ascii': False,
-        'indent': 4,
-    })
+    return Response(dumped_wines)
